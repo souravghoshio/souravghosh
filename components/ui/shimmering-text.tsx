@@ -35,9 +35,6 @@ export function ShimmeringText({
         color: ["var(--color)", "var(--shimmering-color)", "var(--color)"],
         transition: {
           duration,
-          repeat: Infinity,
-          repeatType: "loop" as const,
-          repeatDelay: text.length * 0.05,
           delay: (charIndex * duration) / text.length,
           ease: "easeInOut",
         },

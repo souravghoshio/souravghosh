@@ -3,24 +3,26 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import {useTheme} from "next-themes"
 
-import { Moon, Mail, Phone, MapPin, Clock, Mars, Calendar } from "lucide-react";
+import { Moon, Sun, Mail, Phone, MapPin, Clock, Mars, Calendar, Repeat } from "lucide-react";
 import {
   RiGithubFill,
   RiLinkedinBoxFill,
   RiTwitterXFill,
 } from "@remixicon/react";
-import { TextFlip } from "@/components/text-flip";
-import { ShimmeringText } from "@/components/shimmering-text";
+import { TextFlip } from "@/components/ui/text-flip";
+import { ShimmeringText } from "@/components/ui/shimmering-text";
 
 import { Button } from "@/components/ui/button";
 
-import { CopyButton } from "@/components/copy-button";
+import { CopyButton } from "@/components/ui/copy-button";
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+
 
 const WORDS = ["Software Developer.", "Problem Solver.", "Java Enthusiast."];
 
@@ -83,10 +85,16 @@ const Home = () => {
   const date = dateFormatter.format(now);
 
 
+  const {setTheme, resolvedTheme} = useTheme();
+
+  const toggleTheme = () => {
+    setTheme(resolvedTheme == "dark" ? "light" : "dark");
+  }
+
   return (
     <main className="w-full min-h-screen">
-      <nav className="w-full fixed top-0 left-0 border-b border-white/10 bg-background">
-        <div className="flex w-full max-w-3xl items-center justify-between mx-auto px-4 py-3 border-l border-r border-white/10">
+      <nav className="w-full fixed top-0 left-0 border-b border-border bg-background">
+        <div className="flex w-full max-w-3xl items-center justify-between mx-auto px-4 py-3 border-l border-r border-border">
           <div className="flex items-center gap-1.5">
             <Image
               src={"/profile-pic.png"}
@@ -116,13 +124,14 @@ const Home = () => {
                 |
               </span>
             </div>
-            <button className="hover:bg-zinc-800/50 p-2 rounded-md group">
-              <Moon size={16} className="group-hover:-rotate-12 " />
+            <button onClick={toggleTheme} className="dark:hover:bg-zinc-800/50 hover:bg-gray-100 p-2 rounded-md group cursor-pointer">
+              <Moon size={16} className="group-hover:-rotate-12 hidden dark:block" />
+              <Sun size={16} className="group-hover:-rotate-12 dark:hidden block" />
             </button>
           </div>
         </div>
       </nav>
-      <div className="w-full max-w-3xl border-l border-r border-white/10 min-h-screen mx-auto">
+      <div className="w-full max-w-3xl border-l border-r border-border min-h-screen mx-auto">
         <div>
           <Image
             src={"/bg-new.jpg"}
@@ -132,8 +141,8 @@ const Home = () => {
             className="w-full h-56 md:h-72"
           />
         </div>
-        <div className="flex w-full border-b border-t border-white/10">
-          <div className="border-r border-white/10">
+        <div className="flex w-full border-b border-t border-border">
+          <div className="border-r border-border">
             <Image
               src={"/profile-pic.png"}
               alt="profile picture"
@@ -143,7 +152,7 @@ const Home = () => {
             />
           </div>
           <div className="mt-auto w-full">
-            <div className="w-full border-b border-t border-white/10 px-4">
+            <div className="w-full border-b border-t border-border px-4">
               <h3 className="text-3xl font-bold">Sourav Ghosh</h3>
             </div>
             <div className="px-4 py-1.5">
@@ -160,28 +169,28 @@ const Home = () => {
           </div>
         </div>
         <div className="h-10 w-full pattern overflow-hidden" />
-        <div className="border-t border-b border-white/10 flex w-full">
-          <div className="w-1/2 border-r border-dashed border-white/10 p-3">
+        <div className="border-t border-b border-border flex w-full">
+          <div className="w-1/2 border-r border-dashed border-border p-3">
             <div className="flex items-center gap-3 group">
-              <div className="h-6 w-6 flex items-center justify-center bg-zinc-800/80 border border-white/10 rounded-sm ring-1 ring-white/8 ring-offset-1 ring-offset-background">
+              <div className="h-6 w-6 flex items-center justify-center bg-zinc-800/80 border border-border rounded-sm ring-1 ring-white/8 ring-offset-1 ring-offset-background">
                 <Mail className="w-4 text-gray-400" />
               </div>
               <Link
                 className="hover:underline underline-offset-3 font-mono text-sm tracking-tight"
-                href="mailto:sourav@souravcodes.com"
+                href="mailto:inbox.souravghosh@gmail.com"
                 target="_blank"
               >
-                sourav@souravcodes.com
+                inbox.souravghosh@gmail.com
               </Link>
               <CopyButton
                 className="opacity-0 group-hover:opacity-50 hover:opacity-100"
                 variant="ghost"
                 size="icon-sm"
-                text="sourav@souravcodes.com"
+                text="inbox.souravghosh@gmail.com"
               />
             </div>
             <div className="flex items-center gap-3 mt-3">
-              <div className="h-6 w-6 flex items-center justify-center bg-zinc-800/80 border border-white/10 rounded-sm ring-1 ring-white/8 ring-offset-1 ring-offset-background">
+              <div className="h-6 w-6 flex items-center justify-center bg-zinc-800/80 border border-border rounded-sm ring-1 ring-white/8 ring-offset-1 ring-offset-background">
                 <Phone className="w-4 text-gray-400" />
               </div>
               <a
@@ -192,7 +201,7 @@ const Home = () => {
               </a>
             </div>
             <div className="flex items-center gap-3 mt-3">
-              <div className="h-6 w-6 flex items-center justify-center bg-zinc-800/80 border border-white/10 rounded-sm ring-1 ring-white/8 ring-offset-1 ring-offset-background">
+              <div className="h-6 w-6 flex items-center justify-center bg-zinc-800/80 border border-border rounded-sm ring-1 ring-white/8 ring-offset-1 ring-offset-background">
                 <MapPin className="w-4 text-gray-400" />
               </div>
               <a
@@ -205,26 +214,26 @@ const Home = () => {
           </div>
           <div className="w-1/2 p-3">
            <div className="flex items-center gap-3">
-              <div className="h-6 w-6 flex items-center justify-center bg-zinc-800/80 border border-white/10 rounded-sm ring-1 ring-white/8 ring-offset-1 ring-offset-background">
+              <div className="h-6 w-6 flex items-center justify-center bg-zinc-800/80 border border-border rounded-sm ring-1 ring-white/8 ring-offset-1 ring-offset-background">
                 <Calendar className="w-4 text-gray-400" />
               </div>
               <span className="text-sm font-mono">{day}, {date}</span>
             </div>
             <div className="flex items-center gap-3 mt-3">
-              <div className="h-6 w-6 flex items-center justify-center bg-zinc-800/80 border border-white/10 rounded-sm ring-1 ring-white/8 ring-offset-1 ring-offset-background">
+              <div className="h-6 w-6 flex items-center justify-center bg-zinc-800/80 border border-border rounded-sm ring-1 ring-white/8 ring-offset-1 ring-offset-background">
                 <Clock className="w-4 text-gray-400" />
               </div>
               <span className="text-sm font-mono">{time.toUpperCase()}</span>
             </div>
             <div className="flex items-center gap-3 mt-3">
-              <div className="h-6 w-6 flex items-center justify-center bg-zinc-800/80 border border-white/10 rounded-sm ring-1 ring-white/8 ring-offset-1 ring-offset-background">
+              <div className="h-6 w-6 flex items-center justify-center bg-zinc-800/80 border border-border rounded-sm ring-1 ring-white/8 ring-offset-1 ring-offset-background">
                 <Mars className="w-4 text-gray-400" />
               </div>
               <span className="text-sm font-mono">he/him</span>
             </div>
           </div>
         </div>
-        <div className="w-full border-b border-white/10 p-3">
+        <div className="w-full border-b border-border p-3">
           <div className="flex items-center gap-2">
             <Tooltip>
               <TooltipTrigger
@@ -282,7 +291,7 @@ const Home = () => {
           </div>
         </div>
         <div className="h-10 w-full pattern overflow-hidden" />
-        <div className="border-t border-b border-white/10 p-2">
+        <div className="border-t border-b border-border p-2">
           <p>
             Lorem ipsum, dolor sit amet consectetur adipisicing elit.
             Repudiandae ex magnam tempore debitis, dolores, provident
