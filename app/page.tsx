@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import {useTheme} from "next-themes"
+import { useClickSound } from "@/hooks/use-click-sound"
 
 import { Moon, Sun, Mail, Phone, MapPin, Clock, Mars, Calendar, Repeat } from "lucide-react";
 import {
@@ -86,6 +87,7 @@ const Home = () => {
 
 
   const {setTheme, resolvedTheme} = useTheme();
+  const { playClick } = useClickSound();
 
   const toggleTheme = () => {
     setTheme(resolvedTheme == "dark" ? "light" : "dark");
@@ -97,11 +99,18 @@ const Home = () => {
         <div className="flex w-full max-w-3xl items-center justify-between mx-auto px-4 py-3 border-l border-r border-border">
           <div className="flex items-center gap-1.5">
             <Image
-              src={"/profile-pic.png"}
+              src={"/profile-pic-light.png"}
               alt="profile image"
               width={24}
               height={24}
-              className="rounded-full"
+              className="rounded-full block dark:hidden"
+            />
+            <Image
+              src={"/profile-pic-dark.png"}
+              alt="profile image"
+              width={24}
+              height={24}
+              className="rounded-full hidden dark:block"
             />
             <span className="font-semibold">Sourav Ghosh</span>
           </div>
@@ -124,7 +133,10 @@ const Home = () => {
                 |
               </span>
             </div>
-            <button onClick={toggleTheme} className="dark:hover:bg-zinc-800/50 hover:bg-gray-100 p-2 rounded-md group cursor-pointer">
+            <button onClick={() => {
+              toggleTheme();
+              playClick();
+            }} className="dark:hover:bg-zinc-800/50 hover:bg-gray-100 p-2 rounded-md group cursor-pointer">
               <Moon size={16} className="group-hover:-rotate-12 hidden dark:block" />
               <Sun size={16} className="group-hover:-rotate-12 dark:hidden block" />
             </button>
@@ -134,21 +146,38 @@ const Home = () => {
       <div className="w-full max-w-3xl border-l border-r border-border min-h-screen mx-auto">
         <div>
           <Image
-            src={"/bg-new.jpg"}
+            src={"/bg-light.jpg"}
             alt="backgroud image"
             width={200}
             height={200}
-            className="w-full h-56 md:h-72"
+            className="w-full h-56 md:h-72 block dark:hidden"
           />
+
+          <Image
+            src={"/bg-dark.png"}
+            alt="backgroud image"
+            width={200}
+            height={200}
+            className="w-full h-56 md:h-72 hidden dark:block"
+          />
+          
+          
         </div>
         <div className="flex w-full border-b border-t border-border">
           <div className="border-r border-border">
             <Image
-              src={"/profile-pic.png"}
+              src={"/profile-pic-light.png"}
               alt="profile picture"
               width={100}
               height={100}
-              className="h-auto w-32 md:w-48 aspect-square rounded-full"
+              className="h-auto w-32 md:w-48 aspect-square rounded-full block dark:hidden"
+            />
+            <Image
+              src={"/profile-pic-dark.png"}
+              alt="profile picture"
+              width={100}
+              height={100}
+              className="h-auto w-32 md:w-48 aspect-square rounded-full hidden dark:block"
             />
           </div>
           <div className="mt-auto w-full">
