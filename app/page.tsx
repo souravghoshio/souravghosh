@@ -161,7 +161,7 @@ const Home = () => {
             alt="backgroud image"
             width={500}
             height={500}
-            className="w-full h-56 md:h-72 object-cover md:object-fill brightness-90 saturate-75 transition-all duration-500 hover:brightness-100 hover:saturate-100"
+            className="w-full h-56 md:h-72 object-cover md:object-fill dark:brightness-75 brightness-100 transition-all duration-700"
           />
         </div>
         <div className="flex w-full border-b border-t border-border">
@@ -183,9 +183,9 @@ const Home = () => {
           </div>
           <div className="mt-auto w-full">
             <div className="w-full border-b border-t border-border px-4">
-              <h3 className="text-3xl font-heading font-semibold">
+              <h1 className="text-3xl font-heading font-semibold">
                 Sourav Ghosh
-              </h3>
+              </h1>
             </div>
             <div className="px-4 py-1.5">
               <TextFlip interval={3}>
@@ -200,7 +200,7 @@ const Home = () => {
             </div>
           </div>
         </div>
-        <div className="h-10 w-full pattern overflow-hidden" />
+        <div className="h-7 w-full pattern overflow-hidden" />
         <div className="border-t border-b border-border flex flex-col md:flex-row w-full">
           <div className="w-full md:w-1/2 md:border-r border-dashed border-border p-3">
             <div className="flex items-center gap-3 group">
@@ -277,10 +277,9 @@ const Home = () => {
                   <Link
                     target="_blank"
                     href="https://linkedin.com/in/souravghoshio"
+                    className="w-8 h-8 flex items-center justify-center p-1 border-border border rounded-md opacity-80 hover:opacity-100"
                   >
-                    <Button variant="outline" className="w-8 h-8 p-1">
-                      <RiLinkedinBoxFill size={36} />
-                    </Button>
+                    <RiLinkedinBoxFill className="w-full h-full" />
                   </Link>
                 }
               />
@@ -294,10 +293,12 @@ const Home = () => {
                 delay={0}
                 closeDelay={0}
                 render={
-                  <Link target="_blank" href="https://x.com/souravghoshio">
-                    <Button variant="outline" className="w-8 h-8 p-1">
-                      <RiTwitterXFill />
-                    </Button>
+                  <Link
+                    target="_blank"
+                    href="https://x.com/souravghoshio"
+                    className="w-8 h-8 flex items-center justify-center p-1 border-border border rounded-md"
+                  >
+                    <RiTwitterXFill className="w-full h-full" />
                   </Link>
                 }
               />
@@ -311,10 +312,12 @@ const Home = () => {
                 delay={0}
                 closeDelay={0}
                 render={
-                  <Link target="_blank" href="https://github.com/souravghoshio">
-                    <Button variant="outline" className="w-8 h-8 p-1">
-                      <RiGithubFill />
-                    </Button>
+                  <Link
+                    target="_blank"
+                    href="https://github.com/souravghoshio"
+                    className="w-8 h-8 flex items-center justify-center p-1 border-border border rounded-md"
+                  >
+                    <RiGithubFill className="w-full h-full" />
                   </Link>
                 }
               />
@@ -324,34 +327,27 @@ const Home = () => {
             </Tooltip>
           </div>
         </div>
-        <div className="h-10 w-full pattern overflow-hidden" />
-        <div className="border-t border-b border-border p-2">
-          <p>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-            Repudiandae ex magnam tempore debitis, dolores, provident
-            praesentium dicta dignissimos odit ad rem minima veniam? Voluptatem
-            amet assumenda ducimus quo rerum dolorem repudiandae excepturi animi
-            in reprehenderit at, asperiores, eveniet nemo quos porro vitae
-            voluptate soluta, ad officiis. Amet dolor in nesciunt incidunt omnis
-            earum. Perferendis, provident fuga. Repellat ad tempora eius aut
-            minus delectus necessitatibus natus voluptates dicta. Perferendis
-            ipsam doloribus perspiciatis quis! Magni, excepturi eos. Accusamus
-            minima quis at excepturi eos ea ratione impedit fuga possimus sed,
-            doloribus cumque molestias magnam numquam fugit qui nam quisquam
-            quod. Asperiores inventore aspernatur animi vero at similique maxime
-            doloribus fugiat ipsa atque repellat quod corrupti officiis
-            voluptatum, voluptatem et sunt vel nobis culpa itaque ratione,
-            repudiandae dolor? Recusandae fugiat, laudantium distinctio aut vel
-            dignissimos voluptates repellat explicabo officia laboriosam.
-            Dolorum numquam excepturi commodi, facere at adipisci dolorem,
-            sapiente officiis amet eum vel fuga, nemo doloribus ex a ipsum
-            laudantium. At vel, asperiores rem id quae excepturi quas dicta
-            natus in mollitia accusantium quod veniam numquam ea libero
-            obcaecati dolores quam non, itaque odit provident enim velit tempora
-            dolorem? Nihil, reprehenderit soluta quos cumque enim tenetur saepe.
-            Unde vero laboriosam velit voluptatem deserunt quisquam!
-          </p>
+        <div className="h-7 w-full pattern overflow-hidden" />
+        <div className="border-t border-b border-border">
+          <div className="px-3 border-b border-border">
+            <h2 className=" text-2xl font-medium font-heading">
+              {"Good Morning"}
+            </h2>
+          </div>
+          <div className="border-b border-border">
+            <p className="p-3 text-sm">
+              I'm Sourav Ghosh — a Software Developer focused on backend
+              engineering, building reliable applications with Java, Spring
+              Boot, and modern web technologies.
+            </p>
+            <p className="p-3 text-sm">
+              I enjoy understanding how systems work under the hood and turning
+              ideas into well-crafted software through clean code, continuous
+              learning, and hands-on projects.
+            </p>
+          </div>
         </div>
+        <div className="h-7 w-full pattern overflow-hidden" />
       </div>
     </main>
   );
