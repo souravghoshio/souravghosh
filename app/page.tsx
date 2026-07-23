@@ -3,10 +3,20 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import {useTheme} from "next-themes"
-import { useClickSound } from "@/hooks/use-click-sound"
+import { useTheme } from "next-themes";
+import { useClickSound } from "@/hooks/use-click-sound";
 
-import { Moon, Sun, Mail, Phone, MapPin, Clock, Mars, Calendar, Repeat } from "lucide-react";
+import {
+  Moon,
+  Sun,
+  Mail,
+  Phone,
+  MapPin,
+  Clock,
+  Mars,
+  Calendar,
+  Repeat,
+} from "lucide-react";
 import {
   RiGithubFill,
   RiLinkedinBoxFill,
@@ -24,9 +34,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 
-
 const WORDS = ["Software Developer.", "Problem Solver.", "Java Enthusiast."];
-
 
 const timeFormatter = new Intl.DateTimeFormat("en-IN", {
   timeZone: "Asia/Kolkata",
@@ -85,42 +93,41 @@ const Home = () => {
   const day = dayFormatter.format(now);
   const date = dateFormatter.format(now);
 
-
-  const {setTheme, resolvedTheme} = useTheme();
+  const { setTheme, resolvedTheme } = useTheme();
   const { playClick } = useClickSound();
 
   const toggleTheme = () => {
     setTheme(resolvedTheme == "dark" ? "light" : "dark");
-  }
+  };
 
   return (
     <main className="w-full min-h-screen">
-      <nav className="w-full fixed top-0 left-0 border-b border-border bg-background">
+      <nav className="w-full fixed top-0 left-0 border-b border-border bg-background z-10">
         <div className="flex w-full max-w-3xl items-center justify-between mx-auto px-4 py-3 border-l border-r border-border">
-          <div className="flex items-center gap-1.5">
+          <Link href={"/"} className="flex items-center gap-2">
             <Image
               src={"/profile-pic-light.png"}
               alt="profile image"
-              width={24}
-              height={24}
+              width={32}
+              height={32}
               className="rounded-full block dark:hidden"
             />
             <Image
               src={"/profile-pic-dark.png"}
               alt="profile image"
-              width={24}
-              height={24}
+              width={32}
+              height={32}
               className="rounded-full hidden dark:block"
             />
-            <span className="font-semibold">Sourav Ghosh</span>
-          </div>
+            <span className="font-medium font-heading">Sourav Ghosh</span>
+          </Link>
 
           <div className="flex items-center gap-1">
-            <ul className="hidden md:flex items-center gap-4">
+            <ul className="hidden md:flex items-center gap-4 px-3 border-r-2">
               {navLinks.map((navlink) => (
                 <li key={navlink.url} className="text-sm">
                   <Link
-                    className="font-medium text-gray-400 hover:text-gray-50"
+                    className="font-medium opacity-60 hover:opacity-100 transition-opacity"
                     href={navlink.url}
                   >
                     {navlink.text}
@@ -128,17 +135,21 @@ const Home = () => {
                 </li>
               ))}
             </ul>
-            <div>
-              <span className="text-xl font-light text-gray-500/50 pl-1">
-                |
-              </span>
-            </div>
-            <button onClick={() => {
-              toggleTheme();
-              playClick();
-            }} className="dark:hover:bg-zinc-800/50 hover:bg-gray-100 p-2 rounded-md group cursor-pointer">
-              <Moon size={16} className="group-hover:-rotate-12 hidden dark:block" />
-              <Sun size={16} className="group-hover:-rotate-12 dark:hidden block" />
+            <button
+              onClick={() => {
+                toggleTheme();
+                playClick();
+              }}
+              className="dark:hover:bg-zinc-800/50 hover:bg-gray-100 p-2 ml-1 rounded-md group cursor-pointer"
+            >
+              <Moon
+                size={16}
+                className="group-hover:-rotate-12 hidden dark:block"
+              />
+              <Sun
+                size={16}
+                className="group-hover:-rotate-12 dark:hidden block"
+              />
             </button>
           </div>
         </div>
@@ -146,22 +157,12 @@ const Home = () => {
       <div className="w-full max-w-3xl border-l border-r border-border min-h-screen mx-auto">
         <div>
           <Image
-            src={"/bg-light.jpg"}
+            src={"/bg.jpg"}
             alt="backgroud image"
-            width={200}
-            height={200}
-            className="w-full h-56 md:h-72 block dark:hidden"
+            width={500}
+            height={500}
+            className="w-full h-56 md:h-72 object-cover md:object-fill brightness-90 saturate-75 transition-all duration-500 hover:brightness-100 hover:saturate-100"
           />
-
-          <Image
-            src={"/bg-dark.png"}
-            alt="backgroud image"
-            width={200}
-            height={200}
-            className="w-full h-56 md:h-72 hidden dark:block"
-          />
-          
-          
         </div>
         <div className="flex w-full border-b border-t border-border">
           <div className="border-r border-border">
@@ -182,13 +183,15 @@ const Home = () => {
           </div>
           <div className="mt-auto w-full">
             <div className="w-full border-b border-t border-border px-4">
-              <h3 className="text-3xl font-bold">Sourav Ghosh</h3>
+              <h3 className="text-3xl font-heading font-semibold">
+                Sourav Ghosh
+              </h3>
             </div>
             <div className="px-4 py-1.5">
               <TextFlip interval={3}>
                 {WORDS.map((word) => (
                   <ShimmeringText
-                    className="[--color:#4B5563] [--shimmering-color:#fff] font-mono text-sm text-balance"
+                    className="[--color:#4B5563] [--shimmering-color:#fff] font-mono text-sm text-balance tracking-wide"
                     key={word}
                     text={word}
                   />
@@ -198,8 +201,8 @@ const Home = () => {
           </div>
         </div>
         <div className="h-10 w-full pattern overflow-hidden" />
-        <div className="border-t border-b border-border flex w-full">
-          <div className="w-1/2 border-r border-dashed border-border p-3">
+        <div className="border-t border-b border-border flex flex-col md:flex-row w-full">
+          <div className="w-full md:w-1/2 md:border-r border-dashed border-border p-3">
             <div className="flex items-center gap-3 group">
               <div className="h-6 w-6 flex items-center justify-center bg-zinc-800/80 border border-border rounded-sm ring-1 ring-white/8 ring-offset-1 ring-offset-background">
                 <Mail className="w-4 text-gray-400" />
@@ -241,12 +244,14 @@ const Home = () => {
               </a>
             </div>
           </div>
-          <div className="w-1/2 p-3">
-           <div className="flex items-center gap-3">
+          <div className="w-full md:w-1/2 p-3">
+            <div className="flex items-center gap-3">
               <div className="h-6 w-6 flex items-center justify-center bg-zinc-800/80 border border-border rounded-sm ring-1 ring-white/8 ring-offset-1 ring-offset-background">
                 <Calendar className="w-4 text-gray-400" />
               </div>
-              <span className="text-sm font-mono">{day}, {date}</span>
+              <span className="text-sm font-mono">
+                {day}, {date}
+              </span>
             </div>
             <div className="flex items-center gap-3 mt-3">
               <div className="h-6 w-6 flex items-center justify-center bg-zinc-800/80 border border-border rounded-sm ring-1 ring-white/8 ring-offset-1 ring-offset-background">
