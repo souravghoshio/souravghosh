@@ -32,7 +32,7 @@ const ThemeButton = () => {
         }
       />
       <TooltipContent>
-        <span className="font-mono">Toogle theme <kbd className="ml-0.5 px-2 py-0.5 rounded-sm bg-muted-foreground">D</kbd></span>
+        <span className="font-heading">Toogle theme <kbd className="ml-0.5 px-2 py-0.5 text-xs rounded-sm bg-muted-foreground font-mono">D</kbd></span>
       </TooltipContent>
     </Tooltip>
   );

@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
-
 import {
   Mail,
   Phone,
@@ -54,11 +53,10 @@ const dateFormatter = new Intl.DateTimeFormat("en-IN", {
 });
 
 const Home = () => {
-
   type navLink = {
     text: string;
     url: string;
-  }
+  };
 
   const navLinks: navLink[] = [
     {
@@ -97,6 +95,22 @@ const Home = () => {
   const day = dayFormatter.format(now);
   const date = dateFormatter.format(now);
 
+  const hour = Number(
+  new Intl.DateTimeFormat("en-IN", {
+    timeZone: "Asia/Kolkata",
+    hour: "numeric",
+    hour12: false,
+  }).format(now)
+);
+
+const greeting =
+  hour < 12
+    ? "Good morning"
+    : hour < 17
+    ? "Good afternoon"
+    : "Good evening";
+
+  
 
   return (
     <main className="w-full min-h-screen">
@@ -314,17 +328,15 @@ const Home = () => {
         <div className="h-7 w-full pattern overflow-hidden" />
         <div className="border-t border-b border-border">
           <div className="px-3 border-b border-border">
-            <h2 className=" text-2xl font-medium font-heading">
-              {"Good Morning"}
-            </h2>
+            <h2 className=" text-2xl font-medium font-heading">{greeting}</h2>
           </div>
           <section id="about" className="border-b border-border">
-            <p className="p-3 text-sm font-normal">
+            <p className="p-3 text-sm font-normal leading-relaxed">
               I'm Sourav Ghosh — a Software Developer focused on backend
               engineering, building reliable applications with Java, Spring
               Boot, and modern web technologies.
             </p>
-            <p className="p-3 text-sm font-normal">
+            <p className="p-3 text-sm font-normal leading-relaxed">
               I enjoy understanding how systems work under the hood and turning
               ideas into well-crafted software through clean code, continuous
               learning, and hands-on projects.
