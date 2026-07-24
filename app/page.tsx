@@ -3,12 +3,9 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { useTheme } from "next-themes";
-import { useClickSound } from "@/hooks/use-click-sound";
+
 
 import {
-  Moon,
-  Sun,
   Mail,
   Phone,
   MapPin,
@@ -33,6 +30,7 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import ThemeButton from "@/components/common/theme-button";
 
 const WORDS = ["Software Developer.", "Problem Solver.", "Java Enthusiast."];
 
@@ -56,14 +54,20 @@ const dateFormatter = new Intl.DateTimeFormat("en-IN", {
 });
 
 const Home = () => {
-  const navLinks = [
+
+  type navLink = {
+    text: string;
+    url: string;
+  }
+
+  const navLinks: navLink[] = [
     {
       text: "Home",
       url: "/",
     },
     {
       text: "About",
-      url: "/about",
+      url: "/#about",
     },
     {
       text: "Projects",
@@ -93,12 +97,6 @@ const Home = () => {
   const day = dayFormatter.format(now);
   const date = dateFormatter.format(now);
 
-  const { setTheme, resolvedTheme } = useTheme();
-  const { playClick } = useClickSound();
-
-  const toggleTheme = () => {
-    setTheme(resolvedTheme == "dark" ? "light" : "dark");
-  };
 
   return (
     <main className="w-full min-h-screen">
@@ -135,22 +133,7 @@ const Home = () => {
                 </li>
               ))}
             </ul>
-            <button
-              onClick={() => {
-                toggleTheme();
-                playClick();
-              }}
-              className="dark:hover:bg-zinc-800/50 hover:bg-gray-100 p-2 ml-1 rounded-md group cursor-pointer"
-            >
-              <Moon
-                size={16}
-                className="group-hover:-rotate-12 hidden dark:block"
-              />
-              <Sun
-                size={16}
-                className="group-hover:-rotate-12 dark:hidden block"
-              />
-            </button>
+            <ThemeButton />
           </div>
         </div>
       </nav>
@@ -159,6 +142,7 @@ const Home = () => {
           <Image
             src={"/bg.jpg"}
             alt="backgroud image"
+            loading="eager"
             width={500}
             height={500}
             className="w-full h-56 md:h-72 object-cover md:object-fill dark:brightness-75 brightness-100 transition-all duration-700"
@@ -334,18 +318,18 @@ const Home = () => {
               {"Good Morning"}
             </h2>
           </div>
-          <div className="border-b border-border">
-            <p className="p-3 text-sm">
+          <section id="about" className="border-b border-border">
+            <p className="p-3 text-sm font-normal">
               I'm Sourav Ghosh — a Software Developer focused on backend
               engineering, building reliable applications with Java, Spring
               Boot, and modern web technologies.
             </p>
-            <p className="p-3 text-sm">
+            <p className="p-3 text-sm font-normal">
               I enjoy understanding how systems work under the hood and turning
               ideas into well-crafted software through clean code, continuous
               learning, and hands-on projects.
             </p>
-          </div>
+          </section>
         </div>
         <div className="h-7 w-full pattern overflow-hidden" />
       </div>

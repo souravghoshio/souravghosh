@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { ThemeProvider } from "next-themes";
+import NextThemeProvider from "@/components/theme-provider";
 
 
 const inter = Inter({
@@ -32,7 +32,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${geist.variable} ${geistMono.variable} h-full antialiased`} suppressHydrationWarning>
       <body className="min-h-full flex flex-col">
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem >{children}</ThemeProvider>
+        <NextThemeProvider >{children}</NextThemeProvider>
       </body>
     </html>
   );
