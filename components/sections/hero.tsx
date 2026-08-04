@@ -46,7 +46,7 @@ const HeroSection = () => {
             <TextFlip interval={3}>
               {WORDS.map((word) => (
                 <ShimmeringText
-                  className="[--color:#4B5563] [--shimmering-color:#fff] font-mono text-sm text-balance tracking-wide"
+                  className="font-mono text-sm text-balance tracking-wide"
                   key={word}
                   text={word}
                 />
