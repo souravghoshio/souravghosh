@@ -33,7 +33,7 @@ const HeroSection = () => {
             alt="profile picture"
             width={100}
             height={100}
-            className="h-auto w-40 md:w-48 aspect-square rounded-full hidden dark:block"
+            className="h-auto w-32 md:w-48 aspect-square rounded-full hidden dark:block"
           />
         </div>
         <div className="mt-auto w-full">
