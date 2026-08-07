@@ -13,9 +13,8 @@ const NextThemeProvider = ({ children }: { children: React.ReactNode }) => {
   );
 };
 
-const ThemeHotKey = () : React.ReactNode => {
- 
-  const toggleTheme = useToggleTheme();
+const ThemeHotKey = (): React.ReactNode => {
+  const { toggleTheme } = useToggleTheme();
 
   const handleKeyDown = (e: KeyboardEvent) => {
     if (e.key.toLowerCase() === "d") {
@@ -29,7 +28,7 @@ const ThemeHotKey = () : React.ReactNode => {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [toggleTheme]);
 
-  return
+  return;
 };
 
 export default NextThemeProvider;

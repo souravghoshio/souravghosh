@@ -8,7 +8,7 @@ import { Sun, Moon } from "lucide-react";
 import { useToggleTheme } from "@/hooks/use-toogle-theme";
 
 const ThemeButton = () => {
-  const toggleTheme = useToggleTheme();
+  const { toggleTheme, isDark } = useToggleTheme();
 
   return (
     <Tooltip>
@@ -18,21 +18,30 @@ const ThemeButton = () => {
         render={
           <button
             onClick={toggleTheme}
-            className="dark:hover:bg-zinc-800/50 hover:bg-gray-100 p-2 ml-1 rounded-md group cursor-pointer"
+            aria-label="Toggle theme"
+            className="hover:bg-foreground/10 p-2 ml-1 rounded-md group cursor-pointer"
           >
-            <Moon
-              size={16}
-              className="group-hover:-rotate-12 hidden dark:block"
-            />
-            <Sun
-              size={16}
-              className="group-hover:-rotate-12 dark:hidden block"
-            />
+            {isDark ? (
+              <Sun
+                size={16}
+                className="group-hover:rotate-12 transition-transform duration-200"
+              />
+            ) : (
+              <Moon
+                size={16}
+                className="group-hover:-rotate-12 transition-transform duration-200"
+              />
+            )}
           </button>
         }
       />
       <TooltipContent>
-        <span className="font-heading">Toogle theme <kbd className="ml-0.5 px-2 py-0.5 text-xs rounded-sm bg-muted-foreground font-mono">D</kbd></span>
+        <span className="font-heading">
+          {isDark ? "Switch to light mode" : "Switch to dark mode"}{" "}
+          <kbd className="ml-0.5 px-2 py-0.5 text-xs rounded-sm bg-muted-foreground/50 font-sans">
+            D
+          </kbd>
+        </span>
       </TooltipContent>
     </Tooltip>
   );
