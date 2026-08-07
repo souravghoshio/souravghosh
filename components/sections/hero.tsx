@@ -4,7 +4,11 @@ import Section from "../layout/section";
 import { ShimmeringText } from "../ui/shimmering-text";
 import { TextFlip } from "../ui/text-flip";
 
-const WORDS = ["Software Developer.", "Problem Solver.", "Java Enthusiast."];
+const WORDS = [
+  "Building thoughtful software.",
+  "Backend-first developer.",
+  "Learning by solving.",
+];
 
 const HeroSection = () => {
   return (
