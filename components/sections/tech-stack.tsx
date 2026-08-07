@@ -11,6 +11,7 @@ import TailwindCSSIcon from "../icons/tailwindcss-icon";
 import ShadCnIcon from "../icons/shadcn-icon";
 import PostgresIcon from "../icons/postgres-icon";
 import DockerIcon from "../icons/docker-icon";
+import NodeJsIcon from "../icons/node-js-icon";
 
 
 
@@ -50,6 +51,11 @@ const TECH_STACK: TechStack[] = [
     name: "React",
     icon: <ReactIcon />,
     url: "https://react.dev/",
+  },
+  {
+    name: "Node.js",
+    icon: <NodeJsIcon />,
+    url: "https://nodejs.org/",
   },
   {
     name: "Next.js",

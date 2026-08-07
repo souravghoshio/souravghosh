@@ -30,27 +30,27 @@ const HeroSection = () => {
             alt="profile picture"
             width={100}
             height={100}
-            className="h-auto w-32 md:w-48 aspect-square rounded-full block dark:hidden"
+            className="h-auto w-40 md:w-48 aspect-square rounded-full block dark:hidden"
           />
           <Image
             src={"/profile-pic-dark.png"}
             alt="profile picture"
             width={100}
             height={100}
-            className="h-auto w-32 md:w-48 aspect-square rounded-full hidden dark:block"
+            className="h-auto w-40 md:w-48 aspect-square rounded-full hidden dark:block"
           />
         </div>
         <div className="mt-auto w-full">
-          <div className="w-full border-b border-t border-border px-4">
+          <div className="w-full border-b border-t border-border px-3">
             <h1 className="text-3xl font-heading font-semibold">
               Sourav Ghosh
             </h1>
           </div>
-          <div className="px-4 py-1.5">
+          <div className="pl-3 py-1.5">
             <TextFlip interval={3}>
               {WORDS.map((word) => (
                 <ShimmeringText
-                  className="font-mono text-sm text-balance tracking-wide"
+                  className="font-mono text-sm"
                   key={word}
                   text={word}
                 />
